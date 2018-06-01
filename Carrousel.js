@@ -1,4 +1,7 @@
 
+
+
+
 // 滚动框ID、左切换按钮、右切换按钮、切换按钮框ID、是否滚动标志位、方向、是否轮播标志位、移动长度、移动速度、间隔时间、页面显示的数目
 function LbMove(boxID, btn_left, btn_right, btnBox, Car, direction, way, moveLengh, speed, Interval, number) {
 	var _ID = $("#" + boxID + "");  //滚动框ID
