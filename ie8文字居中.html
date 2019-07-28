@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <style>
+        #span_aaa{
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 130px;
+            padding: 0 0 0 3px;
+            background: #fff;
+            text-align: center;
+        }
+    
+    </style>
+</head>
+<body>
+    <div style="position: relative;">
+        <select name="aaa" id="aaa" style="width: 150px;text-align:center;" onchange="handleChange()">
+            <option value="222" selected>222</option>
+            <option value="111">111</option>
+            <option value="33">33</option>
+        </select>
+        <span id="span_aaa" onclick="spanClick()"></span>
+    </div>
+    <script>
+        window.onload=function(){
+            handleChange();
+            document.getElementById('aaa').focus();
+        }
+        function handleChange(){
+            let value = document.getElementById('aaa').value
+            document.getElementById('span_aaa').innerText = value;
+        }
+        function spanClick(){
+            document.getElementById('aaa').focus();
+            // $('#aaa').trigger('focus')
+            $('#aaa').trigger('click',true)
+        }
+    </script>
+</body>
+</html>

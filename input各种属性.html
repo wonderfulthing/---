@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>input H5属性</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .test {
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            position: fixed;
+            transition: all 6s;
+            transition-timing-function: ease-out;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body onload="handleLoad()">
+    <input type="datetime-local" value="2018-06-12T19:30" min="2016-06-07T00:00" max="2020-06-14T00:00">
+    <input type="color" value="#ff0000" />
+    <div class="test"></div>
+</body>
+<script>
+    var count = 0;
+    document.querySelector('.test').addEventListener('mouseenter',function(){
+        let dom = document.querySelector('.test')
+        // dom.style.
+    })
+    function handleLoad() {
+        let H = document.documentElement.clientHeight,
+            W = document.documentElement.clientWidth,
+            dom = document.querySelector('.test');
+        let calcT = Math.round(Math.random() * H),
+            calcL = Math.round(Math.random() * W)
+        if (count % 4 == 0) {
+            calcT = H - 200;
+            calcL = Math.round(Math.random() * (W - 200))
+        } else if (count % 4 == 1) {
+            calcT = Math.round(Math.random() * (H - 200));
+            calcL = W - 200;
+
+        } else if (count % 4 == 2) {
+            calcT = 0;
+            calcL = Math.round(Math.random() * (W - 200))
+
+        } else {
+            calcT = Math.round(Math.random() * (H - 200));
+            calcL = 0;
+        }
+        dom.style.top = calcT + 'px'
+        dom.style.left = calcL + 'px'
+        count++
+        setTimeout(() => {
+            handleLoad();
+        }, 6000);
+    }
+</script>
+
+</html>

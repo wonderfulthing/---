@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="indexStyle.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.pagination.min.js"></script>
+<title>首页</title>
+</head>
+<style>
+    label{
+        font-weight: normal;text-align: right;
+        width: 112px;margin-right: 5px;}
+</style>
+<body>
+	<div class="box-top">
+        <div class="tou_one">
+            <img src="img/logo.png" />
+        </div>
+    </div>
+    <div class="box-left">
+        <ul class="ul2">
+            <li><div><a href=""><img src="img/sy-icon.png"><span>系统首页</span></a></div></li>
+            <li><div><a href=""><img src="img/ggjgxx-icon.png"><span>公共机构信息</span></a></div></li>
+            <li><div><a href=""><img src="img/nyjl-icon.png"><span>能源计量与节能</span></a></div></li>
+            <li><div><a href=""><img src="img/ysjl-icon.png"><span>用水计量与节水</span></a></div></li>
+            <li><div><a href=""><img src="img/dtjl-icon.png"><span>低碳计量与减碳</span></a></div></li>
+            <li><div><a href=""><img src="img/qjpbygl-icon.png"><span>器具配备与管理</span></a></div></li>
+            <li><div><a href=""><img src="img/zcb-icon.png"><span>自查表</span></a></div></li>
+        </ul>
+    </div>
+    <div class="box-right">
+    	<div class="">
+            <div class="menttitle-center">
+                <p>
+                    公共机构能源计量工作人员信息添加
+                </p>
+            </div>
+
+            <div class="tj-table">
+                <form class="form-inline">
+                    <div class="form-group" style="width: 28%;">
+                        <div>
+                            <label for="人员姓名">人员姓名</label>
+                            <input type="text" class="form-control" d="人员姓名" placeholder="">
+                        </div>
+                        <div>
+                            <label for="专业技术职务" >专业技术职务</label>
+                            <input type="text" class="form-control" id="专业技术职务" placeholder="">
+                        </div>
+                        <div>
+                        <label for="岗位资格证号" >岗位资格证号</label>
+                        <input type="text" class="form-control" id="岗位资格证号" placeholder="">
+                      </div>
+                        <div>
+                            <label for="备注">备注</label>
+                            <input type="text" class="form-control " id="备注" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group" style="width: 28%;">
+                        <div>
+                            <label for="工作部门" >工作部门</label>
+                            <input type="text" class="form-control" id="工作部门" placeholder="">
+                        </div>
+                        <div>
+                            <label for="岗位培训考核情况" >岗位培训考核情况</label>
+                            <input type="text" class="form-control" id="岗位培训考核情况" placeholder="">
+                        </div>
+                        <div>
+                            <label for="人员状态" >人员状态</label>
+                            <input type="text" class="form-control" id="人员状态" placeholder="">
+                        </div>
+                        <div>
+                            <label for="文件上传">文件上传</label>
+                            <input type="text" class="form-control" id="文件上传" placeholder="">
+                        </div>
+                    </div>
+                    <div  class="form-group" style="width: 43%;">
+                        <div>
+                            <div style="float:left;">
+                                <label >岗位及职务</label>
+                            </div>
+
+                           <div style="float:left;" class="bd-gwzw">
+                               <p>1.能源计量器具：</p>
+                               <p>
+                                   配备<input type="checkbox" id="配备" class="gcs-checkbox">
+                                   <label for="配备"></label>
+                                   使用<input type="checkbox" id="使用" class="gcs-checkbox">
+                                   <label for="使用"></label>
+                                   检定/校准<input type="checkbox" id="检定/校准" class="gcs-checkbox">
+                                   <label for="检定/校准"></label>
+                                   维护<input type="checkbox" id="维护" class="gcs-checkbox">
+                                   <label for="维护"></label>
+                                   报废<input type="checkbox" id="报废" class="gcs-checkbox">
+                                   <label for="报废"></label>
+                               </p>
+                               <p>2.能源计量数据：</p>
+                               <p>
+                                   采集<input type="checkbox" id="采集" class="gcs-checkbox">
+                                   <label for="采集"></label>
+                                   统计<input type="checkbox" id="统计" class="gcs-checkbox">
+                                   <label for="统计"></label>
+                                   分析<input type="checkbox" id="分析" class="gcs-checkbox">
+                                   <label for="分析"></label>
+                               </p>
+                               <p>3.其他：<input type="text" style="border: 1px solid #cecece;"/></p>
+                           </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div style="text-align: center;">
+                        <button class="tj-but">添加</button>
+                        <button class="tj-but qx-but">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <div style="text-align: center;padding: 10px 0px;">
+                <button class="tj-but">批量导入数据</button>
+                <button class="tj-but">数据模板下载</button>
+                <button class="tj-but sc-danger">删除</button>
+                <button class="tj-but sc-danger">全部删除</button>
+                <button class="tj-but dy-warning">打印</button>
+                <button class="tj-but dy-warning">导出</button>
+
+            </div>
+        </div>
+
+        <div class="el-table__header-wrapper">
+            <table >
+                <colgroup>
+                    <col name="el-table_2_column_24" width="80">
+                    <col name="el-table_2_column_24" width="100">
+                    <col name="el-table_2_column_24" width="120">
+                    <col name="el-table_2_column_24" width="120">
+                    <col name="el-table_2_column_24" width="120">
+                    <col name="el-table_2_column_24" width="240">
+                    <col name="el-table_2_column_24" width="120">
+                    <col name="el-table_2_column_24" width="200">
+                    <col name="el-table_2_column_24" width="200">
+                    <col name="el-table_2_column_24" width="120">
+                </colgroup>
+                <tr class="title-color">
+                    <th><input type="checkbox" id="全选" class="gcs-checkbox">
+                        <label for="全选"></label></th>
+                    <th >人员姓名</th>
+                    <th >工作部门</th>
+                    <th >岗位及职务</th>
+                    <th >专业技术职务</th>
+                    <th >岗位培训考核情况</th>
+                    <th >岗位资格证</th>
+                    <th >人员状态</th>
+                    <th >备注</th>
+                    <th >操作</th>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <table class="table-content">
+                <tbody>
+                <colgroup>
+                    <col name="el-table_2_column_24" width="80">
+                    <col name="el-table_2_column_24" width="100">
+                    <col name="el-table_2_column_24" width="120">
+                    <col name="el-table_2_column_24" width="120">
+                    <col name="el-table_2_column_24" width="120">
+                    <col name="el-table_2_column_24" width="240">
+                    <col name="el-table_2_column_24" width="120">
+                    <col name="el-table_2_column_24" width="200">
+                    <col name="el-table_2_column_24" width="200">
+                    <col name="el-table_2_column_24" width="120">
+                </colgroup>
+                <tr class="title-color">
+                    <td><input type="checkbox" id="1" class="gcs-checkbox">
+                        <label for="1"></label></td>
+                    <td >张三</td>
+                    <td >南京明德</td>
+                    <td >测试</td>
+                    <td >南京明德南京明德</td>
+                    <td >南京明德南京明德南京明德</td>
+                    <td >南京明德</td>
+                    <td style="color: #439bf2;">在职</td>
+                    <td >南京明德南京明德南京明德</td>
+                    <td ><img src="img/exdit.png"><span>编辑</span></td>
+                </tr>
+                <tr class="title-color">
+                    <td><input type="checkbox" id="2" class="gcs-checkbox">
+                        <label for="2"></label></td>
+                    <td >张三</td>
+                    <td >南京明德</td>
+                    <td >测试</td>
+                    <td >南京明德南京明德</td>
+                    <td >南京明德南京明德南京明德</td>
+                    <td >南京明德</td>
+                    <td style="color: #ffa838;">调动</td>
+                    <td >南京明德南京明德南京明德</td>
+                    <td ><img src="img/exdit.png"><span>编辑</span></td>
+                </tr>
+                <tr class="title-color">
+                    <td><input type="checkbox" id="3" class="gcs-checkbox">
+                        <label for="3"></label></td>
+                    <td >张三</td>
+                    <td >南京明德</td>
+                    <td >测试</td>
+                    <td >南京明德南京明德</td>
+                    <td >南京明德南京明德南京明德</td>
+                    <td >南京明德</td>
+                    <td style="color: #fe6b6b;">离职</td>
+                    <td >南京明德南京明德南京明德</td>
+                    <td ><img src="img/exdit.png"><span>编辑</span></td>
+                </tr>
+                <tr class="title-color">
+                    <td><input type="checkbox" id="4" class="gcs-checkbox">
+                        <label for="4"></label></td>
+                    <td >张三</td>
+                    <td >南京明德</td>
+                    <td >测试</td>
+                    <td >南京明德南京明德</td>
+                    <td >南京明德南京明德南京明德</td>
+                    <td >南京明德</td>
+                    <td style="color: #fe6b6b;">离职</td>
+                    <td >南京明德南京明德南京明德</td>
+                    <td ><img src="img/exdit.png"><span>编辑</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+<!--页码-->
+        <div class="box">
+            <div id="pagination1" class="page fl">
+                <div class="ui-pagination-container">
+                    <a href="javascript:void(0);" class="ui-pagination-page-item active" data-current="1">1</a>
+                    <a href="javascript:void(0);" class="ui-pagination-page-item" data-current="2">2</a>
+                    <a href="javascript:void(0);" class="ui-pagination-page-item" data-current="3">3</a>
+                    <a href="javascript:void(0);" class="ui-pagination-page-item" data-current="4">4</a>
+                    <a href="javascript:void(0);" class="ui-pagination-page-item" data-current="5">5</a>
+                    <input type="text" style="border: 1px solid #ebeef5;height:29px;width:50px;margin-top: -4px;" placeholder="页码">
+                    <a class="ui-pagination-page-btn-two" href="javascript:void(0);">跳转</a>
+                    <a href="javascript:void(0);" class="ui-pagination-page-item-two" data-current="2">下一页</a>
+                    <a href="javascript:void(0);" class="ui-pagination-page-item-two" data-current="12">尾页</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        $(function(){
+
+            $("#pagination1").pagination({
+                currentPage: 1,
+                totalPage: 12,
+                callback: function(current) {
+                    $("#current1").text(current)
+                }
+            });
+
+            $("#pagination2").pagination({
+                currentPage: 3,
+                totalPage: 12,
+                isShow: false,
+                count: 6,
+                prevPageText: "上一页",
+                nextPageText: "下一页",
+                callback: function(current) {
+                    $("#current2").text(current)
+                }
+            });
+
+            $("#pagination3").pagination({
+                currentPage: 4,
+                totalPage: 16,
+                isShow: true,
+                count: 7,
+                homePageText: "首页",
+                endPageText: "尾页",
+                prevPageText: "上一页",
+                nextPageText: "下一页",
+                callback: function(current) {
+                    $("#current3").text(current)
+                }
+            });
+
+            $("#getPage").on("click", function() {
+                var info = $("#pagination3").pagination("getPage");
+                alert("当前页数：" + info.current + ",总页数：" + info.total);
+            });
+
+            $("#setPage").on("click", function() {
+                $("#pagination3").pagination("setPage", 1, 10);
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>
+
