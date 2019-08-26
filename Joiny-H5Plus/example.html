@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>H5测试</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        body{
+            padding-top: 20px;
+        }
+        button{
+            margin-bottom: 10px;
+            background-color: #fff;
+            padding: 5px;
+            color: #000;
+            text-align: center;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+        input{
+            margin-bottom: 5px;
+        }
+        button.red{
+            background-color: red;
+            color: #fff;
+        }
+        input{
+            padding: 10px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            width: 100%;
+            display: block;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+        }
+        .group{
+            position: relative;
+            padding: 10px 0 0 80px;
+        }
+        .group .title{
+            font-size: 12px;
+            color: #777;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+<div class="group">
+    <div class="title">
+        扫码
+    </div>
+    <div class="content">
+        <button onclick="createBarcode()">开启扫码</button>
+        <button class="red" onclick="closeBarcode()" id="closeCodeBtn" style="display: none;">关闭扫码</button>
+        <button onclick="chooseImgToScan()">相册扫码</button>
+    </div>
+</div>
+
+<div class="group">
+    <div class="title">
+        位置与通讯
+    </div>
+    <div class="content">
+        <button onclick="getLocation()">获取地理位置</button>
+        <button onclick="getContacts()">通讯录列表</button>
+    </div>
+</div>
+
+<div class="group">
+    <div class="title">
+        相机与相册
+    </div>
+    <div class="content">
+        <button onclick="captureImage()">拍照</button>
+        <button onclick="galleryImg(1)">选择单张图片</button>
+        <button onclick="galleryImg()">选择多张图片</button>
+        <input type="text" id="imgUrl" placeholder="图片链接" value="https://mshoptest.codinge.cn/1005/DownloadFile?fileid=19052&width=264"/>
+        <button onclick="savePicture('imgUrl')">保存网络图片到相册</button>
+        <div class="v">
+            <!-- <button onclick="savePicture('base64')">保存base64图片到相册</button> -->
+        </div>
+    </div>
+</div>
+
+<div class="group">
+    <div class="title">
+        文件
+    </div>
+    <div class="content">
+
+
+
+        <input type="text" id="fileUrl" placeholder="下载文件的链接" value="https://mshoptest.codinge.cn"/>
+        <button onclick="createDownload('fileUrl')">下载小文件</button>
+        <button onclick="readTxtFile()">读取文本文件</button>
+
+        <input type="text" id="bigFile" placeholder="下载文件的链接" value="http://joker.joiny.cn/ROOT.7z"/>
+        <button onclick="createDownload('bigFile')">下载大文件</button>
+        <span class="percent" id="percent"></span>
+        <button onclick="cancelDownload()" id="cancelBtn" style="display: none;">取消下载</button>
+
+
+        <br/>
+
+        <input type="text" id="picUrl" placeholder="下载文件的链接" value="https://mshoptest.codinge.cn/1005/DownloadFile?fileid=19052&width=264"/>
+        <button onclick="createDownload('picUrl')">下载文件（图片）</button>
+
+        <button onclick="uploadFile()">文件上传</button>
+        <span class="percent" id="uploadPercent"></span>
+        <button onclick="cancelUpload()" id="cancelUploadBtn" style="display: none;">取消上传</button>
+
+    </div>
+</div>
+
+<div class="group">
+    <div class="title">
+        本地存储
+    </div>
+    <div class="content">
+        <input type="text" id="key" placeholder="输入存入键值对的值" value="name"/>
+        <input type="text" id="value" placeholder="输入存入键值对的值" value="小明"/>
+        <button onclick="setLocalStorage()">写入本地键值对</button>
+        <button onclick="getLocalStorage()">读取本地键值对</button>
+    </div>
+</div>
+
+<div class="group">
+    <div class="title">
+        分享
+    </div>
+    <div class="content">
+        <button onclick="shareWeiXin()">分享到微信好友/朋友圈</button>
+    </div>
+</div>
+
+<div class="group">
+    <div class="title">
+        支付
+    </div>
+    <div class="content">
+        <button onclick="wxPay()">微信支付</button>
+        <button onclick="alipay()">支付宝支付</button>
+    </div>
+</div>
+
+
+<!--引入JS文件-->
+<script src="app.api.1.0.2.js"></script>
+<script>
+
+    //app从后台切换到前台
+    ms.onAppShow(function(){
+        //H5中监听到app从进入前台事件 ， app show .. do something..
+
+    });
+
+    //开启扫码
+    function createBarcode(){
+        ms.scanCode({
+            style : {
+                background : '#000',
+                frameColor : '#07c160',
+                scanbarColor : '#07c160' ,
+                top:'100px',
+                left:'0px',
+                width: '100%',
+                height: '500px'
+            },
+            success : function(code){
+                alert("扫码识别文本：" + code);
+            },
+            fail : function(err){
+                alert("扫码失败："+ JSON.stringify(err) );
+            }
+        });
+
+        //隐藏取消扫码按钮
+        document.getElementById('closeCodeBtn').style.display = 'inline-block' ;
+
+    }
+
+    //关闭扫码
+    function closeBarcode(){
+        ms.closeBarcode();
+        document.getElementById('closeCodeBtn').style.display = 'none' ;
+    }
+
+    //从相册扫码
+    function chooseImgToScan(){
+        ms.scanFromGallery({
+            success : function(code){
+                alert("相册扫码识别文本：" + code);
+            },
+            fail : function(err){
+                alert("相册扫码失败："+ JSON.stringify(err) );
+            }
+        });
+    }
+
+    //获取地理位置
+    function getLocation(){
+        ms.getLocation({
+            success : function(p){
+                alert(JSON.stringify(p) );
+                alert('Geolocation\nLatitude:' + p.coords.latitude + '\nLongitude:' + p.coords.longitude + '\nAltitude:' + p.coords.altitude);
+            },
+            fail : function(err){
+                alert("获取地理位置失败："+ JSON.stringify(err) );
+            }
+        });
+    }
+
+    function getContacts(){
+        ms.getContacts({
+            success : function(contacts){
+                alert(JSON.stringify(contacts) );
+            },
+            fail : function(err){
+                alert("获取通讯录失败："+ JSON.stringify(err) );
+            }
+        });
+    }
+
+    //拍照
+    function captureImage(){
+        ms.takePhoto({
+            success : function(path){
+                alert( "拍照完成，本地图片路径：\n" + path );
+            },
+            fail : function(err){
+                alert("拍照失败："+ JSON.stringify(err) );
+            }
+        });
+    }
+
+    //从相册选取图片
+    function galleryImg(count){
+        ms.chooseImage({
+            count : count , //最大数量，不填则不限制
+            success : function(path){
+                if(typeof path == 'string'){
+                    alert( "选取一张图片时返回图片地址：\n" + path );
+                }else{
+                    alert( "选取多张图片时，返回路径列表：\n" + JSON.stringify(path) );
+                }
+            },
+            fail : function(err){
+                alert("选取图片失败："+ JSON.stringify(err) );
+            }
+        });
+    }
+
+    //保存到相册
+    function savePicture(eleID){
+        var url = document.getElementById(eleID).value ;
+        if(!url){
+           alert("请输入要下载的图片链接");
+           return false;
+        }
+        ms.saveImage({
+            filePath : url , //保存的图片路径，支持网络图片与base64路径
+            success : function(path){
+                alert( "图片保存成功，本地路径为：\n" + path );
+            },
+            fail : function(err){
+                alert("保存图片失败："+ JSON.stringify(err) );
+            }
+        });
+
+    }
+
+    //文件下载
+    var downloadFilePath = null ;
+    var downloadTask = null ;
+    function createDownload(id){
+        var fileUrl = document.getElementById(id).value ;
+        downloadTask = ms.downloadFile({
+           url : fileUrl , //文件的网络链接
+           onProgress : function(downloadSize , totalSize , percent){
+
+               document.getElementById("cancelBtn").style.display = 'inline-block' ;
+               document.getElementById("percent").style.display = 'inline-block' ;
+               document.getElementById("percent").innerText = percent ;
+               //已下载文件大小，文件总大小，下载百分比
+               console.log("下载进度：" + downloadSize + "/" + totalSize );
+           },
+           success : function(path){
+              document.getElementById("cancelBtn").style.display = 'none' ;
+              document.getElementById("percent").style.display = 'none' ;
+              downloadFilePath = path ;
+              alert( "文件下载成功，本地路径为：\n" + JSON.stringify(path) );
+           },
+           fail : function(err){
+              alert("文件下载失败："+ JSON.stringify(err) );
+           }
+        });
+    }
+
+    //取消下载任务
+    function cancelDownload(){
+        document.getElementById("cancelBtn").style.display = 'none' ;
+        document.getElementById("percent").style.display = 'none' ;
+        if(!downloadTask){
+           return false ;
+        }
+        downloadTask.abort();
+    }
+
+    //文件上传
+    var uploadTask = null ;
+    function uploadFile(){
+        if(!downloadFilePath){
+           alert("请先下载一个文件到本地");
+           return false ;
+        }
+        uploadTask = ms.uploadFile({
+            url : 'https://joker.joiny.cn/api/uploadImage' ,
+            filePath : downloadFilePath ,
+            name : 'upfile' ,
+            mimeType : "image/jpeg" , //指定上传文件的类型，不指定会读取文件名的后缀，可能会导致上传文件无法读取的错误。
+            formData : {
+                type : '测试类型'  //自定义的附加数据
+            },
+            header : {
+                customer : "customerValuexxxxx" //不支持设置“Content-Type”、“User-Agent”、“Cookie”的值。
+            },
+            options : {
+                method : "POST" , //仅支持“POST”请求。
+                blocksize : 102400 , //上传任务每次上传的文件块大小（仅在支持断点续传的服务有效），若设置值小于等于0则表示不分块上传。
+                priority : 100 , //数值越大优先级越高，默认优先级值为100。
+                timeout : 120 , // 超时时间为服务器响应请求的时间（不是上传任务完成的总时间），如果设置为0则表示永远不超时。
+                retry : 3 , //上传任务重试次数
+                retryInterval : 30 //上传任务重试间隔时间
+            },
+            onProgress : function(uploadSize , totalSize , percent){
+                document.getElementById("cancelUploadBtn").style.display = 'inline-block' ;
+                document.getElementById("uploadPercent").style.display = 'inline-block' ;
+                document.getElementById("uploadPercent").innerText = percent ;
+                //已上传文件大小，文件总大小，上传百分比
+                console.log("上传进度：" + uploadSize + "/" + totalSize + ",已上传：" + percent );
+            },
+            success : function(res){
+                if(confirm(JSON.stringify(res))){
+                    document.getElementById("cancelUploadBtn").style.display = 'none' ;
+                    document.getElementById("uploadPercent").style.display = 'none' ;
+                }
+            },
+            fail : function(err){
+                alert("error");
+                alert(JSON.stringify(err));
+            }
+        });
+    }
+
+    function cancelUpload(){
+        document.getElementById("cancelUploadBtn").style.display = 'none' ;
+        document.getElementById("uploadPercent").style.display = 'none' ;
+        if(!uploadTask){
+            return false ;
+        }
+        uploadTask.abort();
+    }
+
+    //读取本地文本文件
+    function readTxtFile(){
+        if(!downloadFilePath){
+           alert("没有可读取的文本文件");
+            return false ;
+        }
+        ms.readTxtFile({
+            filePath : downloadFilePath ,
+            success : function(res){
+                alert("文件大小：\n" + res.size + "\n文件路径：\n" + res.name + "\n文件内容：\n" + res.content );
+            },
+            fail : function(err){
+               alert("文件读取失败："+ JSON.stringify(err) );
+            }
+        });
+    }
+
+    //本地数据存储
+    function setLocalStorage(){
+       var key = document.getElementById('key').value ;
+       var value = document.getElementById('value').value ;
+       if(!key){
+          alert("请输入键值对的key");
+          return false ;
+       }
+       ms.setStorage(key , value);
+       alert("写入成功");
+    }
+
+    function getLocalStorage(){
+        var key = document.getElementById('key').value ;
+        if(!key){
+            alert("请输入键值对的key");
+            return false ;
+        }
+        var value = ms.getStorage(key);
+        alert("键：" + key + "，本地存储的数据为：" + value );
+    }
+
+    function shareWeiXin(){
+        ms.wxShare({
+            title: "接口可以自定义的标题",//标题
+            content: "接口可以自定义的分享描述，也可以自定义链接，自定义缩略图哦~",
+            href: 'https://www.baidu.com/' ,//分享出去后，点击跳转地址
+            imgUrl: "https://www.baidu.com/img/superlogo_c4d7df0a003d3db9b65e9ef0fe6da1ec.png?where=super" , //分享缩略图
+            success : function(e){
+                alert("分享完成，无法判断是否分享成功哦~");
+            },
+            fail : function(err){
+               alert(JSON.stringify(err));
+            }
+        });
+    }
+
+    //简单的ajax请求
+    function sendGetRequest( url , success , fail){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            switch(xhr.readyState){
+                case 4:
+                    if(xhr.status==200){
+                        if(typeof  success == "function"){
+                           success(xhr.responseText);
+                        }
+                    }else{
+                        if(typeof fail == "function"){
+                           fail("请求失败");
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        };
+        xhr.open( 'GET' , url );
+        xhr.send();
+    }
+
+    //微信支付
+    function wxPay(){
+        //请求微信预付订单信息
+        sendGetRequest( "https://xxxxx.com/alipay" , function(res){
+            ms.wxPay({
+                statement : res ,
+                success : function(res){
+                    alert(JSON.stringify(res));
+                },
+                fail : function(err){
+                    alert(JSON.stringify(err));
+                }
+            });
+        },function(err){
+            alert("请求支付订单信息失败，请先搭建服务器环境");
+        });
+    }
+
+    //支付宝支付
+    function alipay(){
+        //请求支付宝预付订单信息
+        sendGetRequest( "https://xxxxx.com/alipay" , function(res){
+            ms.alipay({
+                statement : res  ,
+                success : function(res){
+                    alert(JSON.stringify(res));
+                },
+                fail : function(err){
+                    alert(JSON.stringify(err));
+                }
+            });
+        },function(err){
+            alert("请求支付订单信息失败，请先搭建服务器环境");
+        });
+    }
+
+</script>
+</body>
+</html>
