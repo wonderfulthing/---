@@ -104,3 +104,4 @@ function _utf8_decode(utftext) {
 	}
 	return string;
 }
+export default Base64;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 
 <head>
     <meta charset="UTF-8">
@@ -50,17 +50,114 @@
             background: #666;
             text-align: center;
         }
+
+        .test {
+            width: 500px;
+            height: 200px;
+            border: solid 1px black;
+        }
+
+        .testHeight>p {
+            display: inline-block;
+        }
+
+        svg {
+            display: block;
+        }
     </style>
 </head>
 
 <body>
-    <div id="hd">header</div>
+    <!-- <div id="hd">header</div>
     <div id="middle">
         <div id="inside">middle</div>
     </div>
     <div id="left">left</div>
     <div id="right">right</div>
-    <div id="footer">footer</div>
+    <div id="footer">footer</div> -->
+    <!-- <div class="test"> -->
+    <svg width="500px" height="500px" viewBox="0 0 500 500">
+        <rect x="0" y="0" width="100" height="100" fill="#feac5e">
+            <animate attributeName="x" from="0" to="500" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="width" to="500" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="fill" to="black" dur="2s" repeatCount="indefinite" />
+        </rect>
+    </svg>
+    <svg width="500px" height="500px" viewBox="0 0 500 500">
+
+        <rect x="250" y="250" width="50" height="50" fill="#4bc0c8">
+            <animateTransform attributeName="transform" type="rotate" begin="0s" dur="10s" from="0 200 200"
+                to="360 400 400" repeatCount="indefinite" />
+        </rect>
+
+    </svg>
+
+    </rect>
+
+    </svg>
+    <svg width="51px" height="50px" viewBox="0 0 51 50">
+
+        <rect y="0" width="13" height="50" fill="#1fa2ff">
+            <animate attributeName="height" values="50;10;50" begin="0s" dur="1s" repeatCount="indefinite" />
+        </rect>
+
+        <rect x="19" y="0" width="13" height="50" fill="#12d8fa">
+            <animate attributeName="height" values="50;10;50" begin="0.2s" dur="1s" repeatCount="indefinite" />
+        </rect>
+
+        <rect x="38" y="0" width="13" height="50" fill="#06ffcb">
+            <animate attributeName="height" values="50;10;50" begin="0.4s" dur="1s" repeatCount="indefinite" />
+        </rect>
+
+    </svg>
+    <svg width="51px" height="50px" viewBox="0 0 51 50">
+
+        <rect y="0" width="13" height="50" fill="#1fa2ff">
+            <animate attributeName="height" values="50;10;50" begin="0s" dur="1s" repeatCount="indefinite" />
+            <animate attributeName="y" values="0;20;0" begin="0s" dur="1s" repeatCount="indefinite" />
+        </rect>
+
+        <rect x="19" y="0" width="13" height="50" fill="#12d8fa">
+            <animate attributeName="height" values="50;10;50" begin="0.2s" dur="1s" repeatCount="indefinite" />
+            <animate attributeName="y" values="0;20;0" begin="0.2s" dur="1s" repeatCount="indefinite" />
+        </rect>
+
+        <rect x="38" y="0" width="13" height="50" fill="#06ffcb">
+            <animate attributeName="height" values="50;10;50" begin="0.4s" dur="1s" repeatCount="indefinite" />
+            <animate attributeName="y" values="0;20;0" begin="0.4s" dur="1s" repeatCount="indefinite" />
+        </rect>
+
+    </svg>
+    <svg width="50" height="50" viewBox="0 0 50 50">
+        <path fill="#c779d0"
+            d="M25,5A20.14,20.14,0,0,1,45,22.88a2.51,2.51,0,0,0,2.49,2.26h0A2.52,2.52,0,0,0,50,22.33a25.14,25.14,0,0,0-50,0,2.52,2.52,0,0,0,2.5,2.81h0A2.51,2.51,0,0,0,5,22.88,20.14,20.14,0,0,1,25,5Z">
+            <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.5s"
+                repeatCount="indefinite" />
+
+        </path>
+    </svg>
+
+
+    <!-- <p>测试两个字</p>
+        <p>测试200个字123123123123123123123123123123测试是顶顶顶顶顶测试是顶顶顶顶顶测试是顶顶顶顶顶测试是顶顶顶顶顶测试是顶顶顶顶顶测试是顶顶顶顶顶</p>
+        <div class="testHeight">
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+            <p>23124234</p>
+        </div>
+    </div> -->
 </body>
 
 
