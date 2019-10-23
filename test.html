@@ -55,10 +55,19 @@
         .not_active.list .dot::before {
             background: rgb(223, 223, 223);
         }
+        .container{
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+            background: rgba(0, 0, 0, 0.2)
+        }
     </style>
 </head>
 
 <body>
+    <div class="container">
+
+    </div>
     <!-- <div class="test">
         <div class="list first">
             <span class="title">这是一个标题</span>
@@ -82,32 +91,36 @@
         </div>
     </div> -->
     <script>
-        let container = document.createElement('div')
-        container.classList.add('container');
-        document.querySelector('body').appendChild(container)
-        function createLoop(){
-            let div = document.createElement('div')
-            div.classList.add('container')
-            div.appendChild(createNode('第一个标题','first'))
-            div.appendChild(createNode('第二个标题','aaa'))
-            div.appendChild(createNode('第二个标题','active'))
-            div.appendChild(createNode('第二个标题','not_active'))
-            document.querySelector('.container').appendChild(div);
-        }
-        function createNode(title,nodeName){
-            let div = document.createElement('div')
-            div.classList.add('list')
-            div.classList.add(nodeName)
-            let span = document.createElement('span')
-            span.classList.add('title')
-            span.innerText=title;
-            div.appendChild(span)
-            let divChild = document.createElement('div')
-            divChild.classList.add('dot')
-            div.append(divChild);
-            return div;
-        }
-        createLoop();
+        document.addEventListener('click',function(events){
+            console.log(events.clientX,events.clientY)
+            
+        })
+        // let container = document.createElement('div')
+        // container.classList.add('container');
+        // document.querySelector('body').appendChild(container)
+        // function createLoop(){
+        //     let div = document.createElement('div')
+        //     div.classList.add('container')
+        //     div.appendChild(createNode('第一个标题','first'))
+        //     div.appendChild(createNode('第二个标题','aaa'))
+        //     div.appendChild(createNode('第二个标题','active'))
+        //     div.appendChild(createNode('第二个标题','not_active'))
+        //     document.querySelector('.container').appendChild(div);
+        // }
+        // function createNode(title,nodeName){
+        //     let div = document.createElement('div')
+        //     div.classList.add('list')
+        //     div.classList.add(nodeName)
+        //     let span = document.createElement('span')
+        //     span.classList.add('title')
+        //     span.innerText=title;
+        //     div.appendChild(span)
+        //     let divChild = document.createElement('div')
+        //     divChild.classList.add('dot')
+        //     div.append(divChild);
+        //     return div;
+        // }
+        // createLoop();
     </script>
 </body>
 
