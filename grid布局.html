@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>grid布局</title>
+    <style>
+        html,body{
+            height: 100%;
+            margin: 0;
+        }
+        /* .c{
+            display: grid;
+            grid-template-rows: repeat(3,33.3%);
+            grid-template-columns: repeat(3,33.3%);
+            height: 100%;
+        } */
+        /* .c{
+            display: grid;
+            grid-template-columns: repeat(auto-fill,200px);
+            grid-template-columns: 1fr 2fr minmax(300px, 0.5fr);
+            height: 100%;
+            grid-template-areas: 'a b c'
+                                'a b c'
+                                'a b c';
+            grid-auto-flow: column;
+        } */
+        .c{
+            display: grid;
+            grid-template-columns: 1fr 2fr minmax(300px, 0.5fr);
+            height: 100%;
+            grid-template-areas: 'a b c'
+                                'a b c'
+                                'a b c';
+            /* grid-auto-flow: column; */
+            justify-items:center;
+            align-items: start;
+        }
+    </style>
+</head>
+<body>
+    <!-- 待完善属性，属性值比较多 -->
+    <div class="c">
+        <div>01</div>
+        <div>02</div>
+        <div>03</div>
+        <div>04</div>
+        <div>05</div>
+        <div>06</div>
+        <div>07</div>
+        <div>08</div>
+        <div>09</div>
+    </div>
+</body>
+</html>
