@@ -135,28 +135,49 @@
 
 // 自己简易实现
 
-  Function.prototype.bind2 = function(othis){
-    let bindthis = this;
-    return function(){
-      bindthis.apply(othis,Array.prototype.slice.call(arguments,1))
-    }
-  }
-function test(){
-  console.log(this.name)
-  function a(){
-    console.log(process,global)
-    debugger;
-  }
-  a();
+//   Function.prototype.bind2 = function(othis){
+//     let bindthis = this;
+//     return function(){
+//       bindthis.apply(othis,Array.prototype.slice.call(arguments,1))
+//     }
+//   }
+// function test(){
+//   console.log(this.name)
+//   function a(){
+//     console.log(process,global)
+//     debugger;
+//   }
+//   a();
 
-};
-let obj1 = {
-  name:'obj1'
-},
-obj2={
-  name:'obj2'
-}
-test.call(obj1);
-let testF = test.bind2(obj2);
-testF();
+// };
+// let obj1 = {
+//   name:'obj1'
+// },
+// obj2={
+//   name:'obj2'
+// }
+// test.call(obj1);
+// let testF = test.bind2(obj2);
+// testF();
 
+
+const p = Promise.resolve()
+(()=>{
+  const a = new Promise(resolve=>{
+    const b = new Promise(res=>{
+      res(p)
+    })
+    b.then(()=>{
+      console.log('after:await')
+      resolve()
+    })
+  })
+  return a
+})()
+p.then(()=>{
+  console.log('conflict:a')
+}).then(()=>{
+  console.log('conflict:b')
+}).then(()=>{
+  console.log('conflict:c')
+})
